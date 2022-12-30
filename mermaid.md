@@ -1,6 +1,5 @@
 ---
 layout: default
-parent: sandbox
 summary: 
 mermaid: true
 ---
