@@ -6,7 +6,7 @@ summary:
 
 # 辞書型 dict
 
-- python3.6 以降は辞書内の順序が保存されるようになった
+python3.6 以降は辞書内の順序が保存されるようになった
 
 ## 使い方
 
@@ -16,7 +16,6 @@ d = {"apple": 3, "banana": 5, "orange": 8}  # 中身入りの辞書
 ```
 
 ## 計算量
-
 
 |操作|コード|最悪計算量|備考|
 |---|:-:|:-:|---|---|
@@ -30,7 +29,7 @@ d = {"apple": 3, "banana": 5, "orange": 8}  # 中身入りの辞書
 
 ## Counter
 
-- [PythonのCounterでリストの各要素の出現個数をカウント | note.nkmk.me](https://note.nkmk.me/python-collections-counter/)
+- [PythonのCounterでリストの各要素の出現個数をカウント](https://note.nkmk.me/python-collections-counter/)
 
 ```python
 from collections import Counter
@@ -42,7 +41,7 @@ print(c)  # Counter({'a': 4, 'c': 2, 'b': 1})
 
 ## Union-Find
 
-- [PythonでのUnion-Find（素集合データ構造）の実装と使い方 | note.nkmk.me](https://note.nkmk.me/python-union-find/)
+- [PythonでのUnion-Find（素集合データ構造）の実装と使い方](https://note.nkmk.me/python-union-find/)
 
 <details markdown="1">
 <summary>要素数を指定する実装</summary>
