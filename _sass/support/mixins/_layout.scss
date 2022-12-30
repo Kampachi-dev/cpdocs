@@ -13,7 +13,7 @@
   @if $value {
     // Prints a media query based on the value
     @media (min-width: rem($value)) {
-      @content;
+      // @content;
     }
   } @else {
     @warn "No value could be retrieved from `#{$media-query}`. "
