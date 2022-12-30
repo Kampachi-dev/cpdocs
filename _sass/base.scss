@@ -12,14 +12,14 @@
 
 html {
   @include fs-4;
-  font-size: 14px !important;
 
   scroll-behavior: smooth;
 }
 
 body {
   font-family: $body-font-family;
-  // font-size: inherit;
+  font-size: inherit;
+  
   line-height: $body-line-height;
   color: $body-text-color;
   background-color: $body-background-color;
