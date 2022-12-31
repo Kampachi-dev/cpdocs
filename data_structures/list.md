@@ -1,7 +1,8 @@
 ---
-layout: default
+layout: page
 parent: データ構造
 summary: 
+last_modified_date: 2022-12-31
 ---
 
 # リスト list
