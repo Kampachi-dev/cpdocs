@@ -183,9 +183,6 @@ layout: table_wrappers
           </ul>
         {% endif %}
 
-        <!-- {% capture footer_custom %}
-          {%- include footer_custom.html -%}
-        {% endcapture %} -->
         {% if footer_custom != "" or site.last_edit_timestamp or site.gh_edit_link %}
           <hr>
           <footer>
@@ -202,7 +199,7 @@ layout: table_wrappers
                     Page last modified: <span class="d-inline-block">{{ page.last_modified_date | date: site.last_edit_time_format }}</span>
                   </p>
                 {% endif %}
-                {% if
+                <!-- {% if
                   site.gh_edit_link and
                   site.gh_edit_link_text and
                   site.gh_edit_repository and
@@ -212,7 +209,7 @@ layout: table_wrappers
                   <p class="text-small text-grey-dk-000 mb-0">
                     <a href="{{ site.gh_edit_repository }}/{{ site.gh_edit_view_mode }}/{{ site.gh_edit_branch }}{% if site.gh_edit_source %}/{{ site.gh_edit_source }}{% endif %}{% if page.collection and site.collections_dir %}/{{ site.collections_dir }}{% endif %}/{{ page.path }}" id="edit-this-page">{{ site.gh_edit_link_text }}</a>
                   </p>
-                {% endif %}
+                {% endif %} -->
               </div>
             {% endif %}
           </footer>
