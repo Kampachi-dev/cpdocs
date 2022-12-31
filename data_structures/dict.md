@@ -113,6 +113,11 @@ class UnionFind():
 
 <details>
 <summary>UFDict の実装</summary>
+
+```python
+hello = 3
+```
+
 </details>
 
 
