@@ -183,9 +183,9 @@ layout: table_wrappers
           </ul>
         {% endif %}
 
-        {% capture footer_custom %}
+        <!-- {% capture footer_custom %}
           {%- include footer_custom.html -%}
-        {% endcapture %}
+        {% endcapture %} -->
         {% if footer_custom != "" or site.last_edit_timestamp or site.gh_edit_link %}
           <hr>
           <footer>
@@ -199,7 +199,7 @@ layout: table_wrappers
               <div class="d-flex mt-2">
                 {% if site.last_edit_timestamp and site.last_edit_time_format and page.last_modified_date %}
                   <p class="text-small text-grey-dk-000 mb-0 mr-2">
-                    Page last modified: <span class="d-inline-block">{{ page.last_modified_date | date: site.last_edit_time_format }}</span>.
+                    Page last modified: <span class="d-inline-block">{{ page.last_modified_date | date: site.last_edit_time_format }}</span>
                   </p>
                 {% endif %}
                 {% if
@@ -217,6 +217,10 @@ layout: table_wrappers
             {% endif %}
           </footer>
         {% endif %}
+
+        {% capture footer_custom %}
+          {%- include footer_custom.html -%}
+        {% endcapture %}
 
       </div>
     </div>
