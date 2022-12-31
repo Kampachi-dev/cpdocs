@@ -175,6 +175,7 @@ class UnionFind():
 
 </details>
 
+
 ```python
 uf = UnionFind(10)  # 要素数 10 の Union-Find
 uf = UnionFind()    # UFdict の場合は要素数を指定しない
