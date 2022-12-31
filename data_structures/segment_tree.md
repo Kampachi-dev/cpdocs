@@ -9,7 +9,7 @@ last_modified_date: 2022-12-31
 
 モノイドの区間演算を効率的に行うデータ構造。
 
-<details>
+<details markdown="1">
 <summary>モノイドとは</summary>
 
 以下の性質を満たす代数構造のこと。
