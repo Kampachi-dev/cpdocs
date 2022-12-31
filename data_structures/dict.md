@@ -111,6 +111,9 @@ class UnionFind():
 </details>
 
 
+<details>
+<summary>UFDict の実装</summary>
+</details>
 
 
 ```python
