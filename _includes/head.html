@@ -38,6 +38,8 @@
   {% if favicon %}
     <link rel="icon" href="{{ site.favicon_ico | default: '/favicon.ico' | relative_url }}" type="image/x-icon">
   {% endif %}
+  <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | relative_url }}" type="image/png" sizes="180x180">
+
 
   {% seo %}
 
