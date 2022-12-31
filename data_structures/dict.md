@@ -110,16 +110,70 @@ class UnionFind():
 
 </details>
 
-
-<details>
-<summary>UFDict の実装</summary>
+<details markdown="1">
+<summary>UFdict の実装</summary>
 
 ```python
-hello = 3
+from collections import defaultdict
+
+class UnionFind():
+    def __init__(self, elements=None) -> None:
+        class KeyDict(dict):
+            def __missing__(self, key):
+                self[key] = key
+                return key
+        self._parent = KeyDict()
+        self._size = defaultdict(lambda: 1)
+
+        if elements is not None:
+            for element in elements:
+                _, _ = self._parent[element], self._size[element]
+
+    def find(self, x):
+        if self._parent[x] == x:
+            return x
+        else:
+            self._parent[x] = self.find(self._parent[x])
+            return self._parent[x]
+
+    def union(self, x, y) -> None:
+        x = self.find(x)
+        y = self.find(y)
+
+        if x == y:
+            return
+        if self._size[x] < self._size[y]:
+            x, y = y, x
+        self._size[x] += self._size[y]
+        self._parent[y] = x
+
+    def same(self, x, y) -> bool:
+        return self.find(x) == self.find(y)
+
+    def size(self, x) -> int:
+        return self._size[self.find(x)]
+
+    def members(self, x) -> list:
+        root = self.find(x)
+        return [p for p in self._parent if self.find(p) == root]
+
+    def roots(self) -> list:
+        return [p for p, q in self._parent.items() if p == q]
+
+    def group_count(self) -> int:
+        return len(self.roots())
+
+    def all_group_members(self) -> defaultdict:
+        group_members = defaultdict(list)
+        for member in self._parent:
+            group_members[self.find(member)].append(member)
+        return group_members
+
+    def __str__(self) -> str:
+        return "\n".join(f"{r}: {m}" for r, m in self.all_group_members().items())
 ```
 
 </details>
-
 
 ```python
 uf = UnionFind(10)  # 要素数 10 の Union-Find
