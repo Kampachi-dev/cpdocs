@@ -110,16 +110,7 @@ class UnionFind():
 
 </details>
 
-<details>
-<summary>UFdict の実装</summary>
 
-```python
-from collections import defaultdict
-
-
-```
-
-</details>
 
 
 ```python
