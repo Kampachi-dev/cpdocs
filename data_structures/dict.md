@@ -82,7 +82,7 @@ class UnionFind():
 
     def size(self, x: int) -> int:
         "要素 x が属するグループの要素数を返す / O(log n)"
-        return self.parents[self.find(x)]
+        return (-1) * self.parents[self.find(x)]
 
     def members(self, x: int) -> list:
         "要素 x が属するグループの要素をリストで返す / O(n log n)"
