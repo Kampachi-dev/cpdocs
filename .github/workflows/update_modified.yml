@@ -1,0 +1,27 @@
+name: update modified
+on:
+  push:
+    paths:
+      - '**.md'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - name: overwrite last_modified_date
+        run: |
+          today=`date "+%Y-%m-%d"`
+          files=($(git diff --name-only --diff-filter=AM HEAD^ HEAD -- '**.md'))
+          for file in ${files[@]}; do sed -i "s/last_modified_date:.*/last_modified_date: ${today}/" $file; done
+      - name: commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if (git diff --shortstat | grep '[0-9]'); then \
+            git add .; \
+            git commit -m "Update last_modified_date"; \
+            git push origin HEAD:${GITHUB_REF}; \
+          fi
