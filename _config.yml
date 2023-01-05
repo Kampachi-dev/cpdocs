@@ -18,7 +18,7 @@ remote_theme: pmarsceill/just-the-docs
 
 
 title: 競プロ改
-description: A Jekyll theme for documentation
+description: 競プロで勉強した内容まとめ
 baseurl: "/cpdocs" # the subpath of your site, e.g. /blog
 url: "https://kampachi-dev.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
