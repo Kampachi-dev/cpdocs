@@ -2,7 +2,7 @@
 layout: default
 parent: グラフアルゴリズム
 summary: 
-last_modified_date: 2023-01-01
+last_modified_date:
 ---
 
 # ダイクストラ法
@@ -30,9 +30,11 @@ heapify(que)
 
 while que:
     d, u = heappop(que)
+    if dist[u] != -1:
+        continue
+    dist[u] = d
     for v in graph[u]:
         if dist[v] == -1:
-            dist[v] = d + 1
             heappush(que, (dist[v], v))
 
 print(max(dist))
