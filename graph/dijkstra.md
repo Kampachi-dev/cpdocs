@@ -36,6 +36,4 @@ while que:
     for v in graph[u]:
         if dist[v] == -1:
             heappush(que, (dist[v], v))
-
-print(max(dist))
 ```
