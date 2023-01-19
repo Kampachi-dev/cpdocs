@@ -2,7 +2,7 @@
 layout: default
 parent: 整数論
 summary: 
-last_modified_date: 2022-12-31
+last_modified_date:
 ---
 
 # 二項係数
@@ -23,7 +23,7 @@ last_modified_date: 2022-12-31
 ```python
 class BinomialCoefficients():
     def __init__(self, N: int, MOD: int) -> None:
-        "Pre-calculate to compute the combination. / O(N)"
+        "Pre-calculate / O(N)"
         self.MOD = MOD
         self.fact = [1, 1]
         self.inv = [0, 1]
@@ -35,7 +35,7 @@ class BinomialCoefficients():
             self.factinv.append((self.factinv[i-1] * self.inv[i]) % MOD)
 
     def calc(self, n: int, r: int) -> int:
-        "Calculate the total number of combinations. / O(1)"
+        "Calculate nCr mod MOD / O(1)"
         if (r < 0) or (n < r):
             return 0
         return self.fact[n] * self.factinv[r] * self.factinv[n-r] % self.MOD
