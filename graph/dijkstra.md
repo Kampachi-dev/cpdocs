@@ -17,23 +17,24 @@ last_modified_date: 2023-01-15
 from heapq import heapify, heappop, heappush
 
 N, M = map(int, input().split())
-graph = [set() for n in range(N)]
+graph = [dict() for n in range(N+1)]
 for m in range(M):
-    A, B = map(int, input().split())
-    graph[A].add(B)
-    graph[B].add(A)
+    A, B, C = map(int, input().split())
+    graph[A][B] = C
+    graph[B][A] = C
 
-dist = [-1] * N
-dist[0] = 0
-que = [(dist[0], 0)]
+INF = 10 ** 18
+dist = [INF] * (N+1)
+dist[1] = 0
+que = [(dist[1], 1)]
 heapify(que)
 
 while que:
     d, u = heappop(que)
-    if dist[u] != -1:
+    if dist[u] != d:
         continue
-    dist[u] = d
     for v in graph[u]:
-        if dist[v] == -1:
+        if dist[v] > d + graph[u][v]:
+            dist[v] = d + graph[u][v]
             heappush(que, (dist[v], v))
 ```
