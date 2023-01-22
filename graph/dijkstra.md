@@ -2,7 +2,7 @@
 layout: default
 parent: グラフアルゴリズム
 summary: 
-last_modified_date: 2023-01-15
+last_modified_date: 2023-01-22
 ---
 
 # ダイクストラ法
