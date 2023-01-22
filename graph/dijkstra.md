@@ -10,8 +10,11 @@ last_modified_date: 2023-01-22
 単一始点最短経路問題 (始点を固定した時に、他のすべての頂点への最短経路を求める問題) を効率的に解くアルゴリズム。
 
 - [ダイクストラ法による単一始点最短経路を求めるアルゴリズム](https://algo-logic.info/dijkstra/)
+- [ダイクストラ法のよくあるミスと落し方](https://snuke.hatenablog.com/entry/2021/02/22/102734)
 
 頂点 $E$ 個、辺 $V$ 本のグラフにダイクストラ法を適用すると、優先度付きキューを利用することで、計算量は $O(E \log V)$ となる。
+
+while ループ内の `if dist[u] != d: continue` がないと $O(E^2)$ になるので注意。 
 
 ```python
 from heapq import heapify, heappop, heappush
@@ -31,7 +34,7 @@ heapify(que)
 
 while que:
     d, u = heappop(que)
-    if dist[u] != d:
+    if dist[u] != d:  # 確定している頂点は再び見ない
         continue
     for v in graph[u]:
         if dist[v] > d + graph[u][v]:
