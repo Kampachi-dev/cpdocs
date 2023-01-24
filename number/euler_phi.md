@@ -2,7 +2,7 @@
 layout: default
 parent: 整数論
 summary: 
-last_modified_date: 2023-01-23
+last_modified_date: 2023-01-24
 ---
 
 # オイラーの Φ 関数
