@@ -3,7 +3,7 @@ layout: default
 parent: 動的計画法
 summary: 
 mermaid: true
-last_modified_date:
+last_modified_date: 2023-01-24
 ---
 
 # 確率 DP / 期待値 DP
