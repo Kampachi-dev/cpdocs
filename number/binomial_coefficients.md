@@ -45,3 +45,13 @@ class BinomialCoefficients():
 # 必要な分だけ用意する
 bc = BinomialCoefficients(2000, 1000000007)
 ```
+
+$n$ が大きいと上の方法は使えないが、$n$ が固定で $k \leq 10^7$ くらいなら $$_n C_k = \frac{n}{1} \times \frac{n-1}{2} \times \cdots \frac{n-(k-1)}{k}$$ を使って $O(k \log k)$ で計算できる。
+
+- [ABC156D - Bouquet](https://atcoder.jp/contests/abc156/tasks/abc156_d)
+
+```python
+nC = [1] * (K+1)
+for k in range(1, K+1):
+    nC[k] = (nC[k-1] * (n-(k-1))) * pow(k, MOD-2, MOD) % MOD
+```
