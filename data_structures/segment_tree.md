@@ -2,7 +2,7 @@
 layout: default
 parent: データ構造
 summary: 
-last_modified_date: 2022-12-31
+last_modified_date:
 ---
 
 # セグメントツリー
@@ -28,6 +28,7 @@ last_modified_date: 2022-12-31
 |区間和|`add(x, y)`|`0`|
 |区間積|`mul(x, y)`|`1`|
 |最大公約数|`gcd(x, y)`|`0`|
+|排他的論理和|`xor(x, y)`|`0`|
 
 <details markdown="1">
 <summary>一点更新区間取得セグ木の実装</summary>
@@ -37,6 +38,7 @@ from typing import Callable
 
 class SegmentTree:
     def __init__(self, op: Callable[[int, int], int], e: int, L: list):
+        self.size = len(L)
         self.op = op
         self.e = e
         self.x = 0
@@ -45,24 +47,33 @@ class SegmentTree:
         self.tree = [self.e] * (2 ** (self.x + 1))
         for i in range(len(L)):
             self.tree[i + (2 ** self.x)] = L[i]
-        print(self.tree)
         for i in range(2 ** self.x - 1, 0, -1):
             self.tree[i] = self.op(self.tree[2*i], self.tree[2*i+1])
-        print(self.tree)
 
     def update(self, i: int, x: int) -> None:
+        "update the i-th element to x"
         i += 2 ** self.x
         self.tree[i] = x
         while i > 1:
             i //= 2
             self.tree[i] = self.op(self.tree[2*i], self.tree[2*i+1])
-        print(self.tree)
+
+    def __setitem__(self, i: int, x: int) -> None:
+        self.update(i, x)
 
     def get(self, i: int) -> int:
-        i += 2 ** self.x
-        return self.tree[i]
+        "Return the i-th element, or IndexError if it doesn't exist"
+        if i < 0:
+            i += self.size
+        if i < 0 or self.size <= i:
+            raise IndexError
+        return self.tree[i + 2 ** self.x]
+
+    def __getitem__(self, i: int) -> int:
+        return self.get(i)
 
     def query(self, l: int, r: int) -> int:
+        "Return query in [l, r)"
         result = self.e
         l += 2 ** self.x
         r += 2 ** self.x
@@ -82,8 +93,7 @@ class SegmentTree:
 
 |操作|コード|計算量|備考|
 |---|:-:|:-:|---|
-|セグメントツリーを構築する|`seg = SegmentTree(op, e, A)`|$O(n)$||
-|リストの $i$ 番目の値を取得する|`seg.get(i)`|$O(1)$||
-|リストの $i$ 番目の値を `x` に更新する|`seg.update(i, x)`|$O(\log n)$||
-|半開区間 $[l, r)$ の集約値を求める|`seg.query(l, r)`|$O(\log n)$||
-
+|セグメントツリーを構築する|`segtree = SegmentTree(op, e, A)`|$O(n)$||
+|リストの $i$ 番目の値を取得する|`segtree.get(i)`<br>`segtree[i]`|$O(1)$||
+|リストの $i$ 番目の値を `x` に更新する|`segtree.update(i, x)`<br>`segtree[i] = x`|$O(\log n)$||
+|半開区間 $[l, r)$ の集約値を求める|`segtree.query(l, r)`|$O(\log n)$||
