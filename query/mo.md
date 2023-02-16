@@ -2,7 +2,6 @@
 layout: default
 parent: クエリ処理
 summary: 
-mermaid: true
 last_modified_date: 2023-02-16
 ---
 
