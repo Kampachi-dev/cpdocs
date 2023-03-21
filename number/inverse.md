@@ -1,7 +1,7 @@
 ---
 layout: default
 parent: 整数論
-summary: 
+summary:
 last_modified_date: 2023-01-01
 ---
 
@@ -24,3 +24,13 @@ python では、組み込み関数 `pow` の第 3 引数に mod を指定でき�
 P = 998244353
 inv_a = pow(a, P-2, P)
 ```
+
+## 逆元がないとき
+
+- [ABC293E - Geometric Progression](https://atcoder.jp/contests/abc293/tasks/abc293_e/)
+
+見事に破壊されました。オイラーの定理 (とフェルマーの小定理) は互いに素でないときに適用できなくなります。解説によると
+
+> 剰余の法 $M$ と互いに素とは限らない数 $K$ で除算を行いたい場合、$\bmod MK$ で計算を行えばよいです。
+
+だそうです。
