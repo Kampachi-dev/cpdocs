@@ -2,7 +2,7 @@
 layout: default
 parent: グラフアルゴリズム
 summary:
-last_modified_date:
+last_modified_date: 2023-02-23
 ---
 
 # 最小共通祖先
