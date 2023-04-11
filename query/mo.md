@@ -1,13 +1,13 @@
 ---
 layout: default
 parent: クエリ処理
-summary: 
+summary:
 last_modified_date: 2023-02-16
 ---
 
 # Mo's algorithm
 
-- [Mo's algorithm - ei1333の日記](https://ei1333.hateblo.jp/entry/2017/09/11/211011)
+- [Mo's algorithm - ei1333 の日記](https://ei1333.hateblo.jp/entry/2017/09/11/211011)
 - [Mo's algorithm(クエリ平方分割)の話 - Qiita](https://qiita.com/ageprocpp/items/34121c58e571ea8c4023)
 
 区間に関するクエリを先読みして適切な順番に並び替え、高速に処理するためのアルゴリズム。幅 $N$ の数列に対してクエリが $Q$ 個あるとき、端を 1 マス伸縮させるときの計算量を $O(\alpha)$ とすると、クエリ全体の計算量は $O(\alpha N \sqrt{Q})$ となる。
@@ -15,6 +15,7 @@ last_modified_date: 2023-02-16
 `_init_states()` の初期状態定義と `_add()` / `_delete()` の処理、`process()` 内のクエリを処理して結果を格納する部分は、その都度自分で書き換える。
 
 - [ABC242G - Range Pairing Query](https://atcoder.jp/contests/abc242/tasks/abc242_g)
+- [ABC293G - Triple Index](https://atcoder.jp/contests/abc293/tasks/abc293_g)
 
 ```python
 from math import ceil, sqrt
@@ -74,9 +75,9 @@ class Mo:
             self.buckets[i // self.b].append(q[i])
 
         ans = [-1] * len(queries)
-        for i in range(self.b):
+        for bucket in self.buckets:
             b = []
-            for query in self.buckets[i]:
+            for query in bucket:
                 l = query // 10**12
                 r = (query % 10**12) // 10**6
                 i = query % 10**6
