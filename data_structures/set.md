@@ -1,7 +1,7 @@
 ---
 layout: default
 parent: データ構造
-summary: 
+summary:
 last_modified_date: 2022-12-31
 ---
 
@@ -12,22 +12,21 @@ s = set()  # 空集合
 s = {0, 1, 1, 2, 2, 2}  # 重複が取り除かれて {0, 1, 2} になる
 ```
 
-|操作|コード|最悪計算量|備考|
-|---|:-:|:-:|---|---|
-|要素 `a` を追加|`s.add(a)`|$O(1)$|
-|要素数を取得|`len(s)`|$O(1)$|
-|集合内に要素 `a` があるか判定|`a in s`|$O(1)$|ハッシュ値で調べるため|
-|集合 `s` と集合 `t` との和集合|`s | t` <br> `s.union(t)`|$O(len(s) + len(t))$|
-|集合 `s` と集合 `t` との積集合|`s & t` <br> `s.intersection(t)`|$O(len(s) + len(t))$|
-|要素 `a` を削除|`s.remove(a)` <br> `s.discard(a)`|$O(1)$|存在しない値を指定したとき<br>`s.remove(a)` はエラー<br>`s.discard(a)` は何もしない|
+| 操作                           |              コード               |      最悪計算量      | 備考                                                                                |
+| ------------------------------ | :-------------------------------: | :------------------: | ----------------------------------------------------------------------------------- |
+| 要素 `a` を追加                |            `s.add(a)`             |        $O(1)$        |
+| 要素数を取得                   |             `len(s)`              |        $O(1)$        |
+| 集合内に要素 `a` があるか判定  |             `a in s`              |        $O(1)$        | ハッシュ値で調べるため                                                              |
+| 集合 `s` と集合 `t` との和集合 |                `s                 |  t`<br>`s.union(t)`  | $O(len(s) + len(t))$                                                                |
+| 集合 `s` と集合 `t` との積集合 | `s & t` <br> `s.intersection(t)`  | $O(len(s) + len(t))$ |
+| 要素 `a` を削除                | `s.remove(a)` <br> `s.discard(a)` |        $O(1)$        | 存在しない値を指定したとき<br>`s.remove(a)` はエラー<br>`s.discard(a)` は何もしない |
 
 - `set` の `set` をとるときは `frozenset` を使う
 
+## 順序付き集合 SortedSet / SortedMultiset
 
-## 平衡二分探索木 SortedSet / SortedMultiset
-
-- tatyam 氏が平方分割による平衡二分探索木を実装している
-    - [Python で std::set の代替物を作った - Qiita](https://qiita.com/tatyam/items/492c70ac4c955c055602)
+- tatyam 氏が平方分割による順序付き集合を実装している
+  - [Python で std::set の代替物を作った - Qiita](https://qiita.com/tatyam/items/492c70ac4c955c055602)
 
 <details markdown="1">
 <summary>SortedSet の実装</summary>
@@ -334,19 +333,19 @@ class SortedMultiset(Generic[T]):
 s = SortedSet([])  # 空のリストを渡して SortedSet オブジェクトを生成 (SortedMultiset も同様)
 ```
 
-|操作|コード|償却計算量|備考|
-|---|:-:|:-:|---|---|
-|要素数を取得|`len(s)`|$O(1)$|
-|要素 `a` を追加|`s.add(a)`|$O(\sqrt{n})$|`SortedSet` は重複を許さない <br> `SortedMultiset` は重複を許す|
-|要素 `a` を削除|`s.discard(a)`|$O(\sqrt{n})$|`SortedMultiset` では 1 個だけ削除|
-|`a` より小さい最大の要素を取得|`s.lt(a)`|$O(\sqrt{n})$|less than|
-|`a` 以下で最大の要素を取得|`s.le(a)`|$O(\sqrt{n})$|less than or equal|
-|`a` より大きい最小の要素を取得|`s.gt(a)`|$O(\sqrt{n})$|greater than|
-|`a` 以上で最小の要素を取得|`s.ge(a)`|$O(\sqrt{n})$|greater than or equal|
-|小さいほうから `k` 番目の要素を取得|`s[k]`|$O(\sqrt{n})$|
-|`k` より小さい要素の数を取得|`s.index(k)`|$O(\sqrt{n})$|
-|`k` 以下の要素の数を取得|`s.index_right(k)`|$O(\sqrt{n})$|
+| 操作                                |       コード       |  償却計算量   | 備考                                                            |
+| ----------------------------------- | :----------------: | :-----------: | --------------------------------------------------------------- |
+| 要素数を取得                        |      `len(s)`      |    $O(1)$     |
+| 要素 `a` を追加                     |     `s.add(a)`     | $O(\sqrt{n})$ | `SortedSet` は重複を許さない <br> `SortedMultiset` は重複を許す |
+| 要素 `a` を削除                     |   `s.discard(a)`   | $O(\sqrt{n})$ | `SortedMultiset` では 1 個だけ削除                              |
+| `a` より小さい最大の要素を取得      |     `s.lt(a)`      | $O(\sqrt{n})$ | less than                                                       |
+| `a` 以下で最大の要素を取得          |     `s.le(a)`      | $O(\sqrt{n})$ | less than or equal                                              |
+| `a` より大きい最小の要素を取得      |     `s.gt(a)`      | $O(\sqrt{n})$ | greater than                                                    |
+| `a` 以上で最小の要素を取得          |     `s.ge(a)`      | $O(\sqrt{n})$ | greater than or equal                                           |
+| 小さいほうから `k` 番目の要素を取得 |       `s[k]`       | $O(\sqrt{n})$ |
+| `k` より小さい要素の数を取得        |    `s.index(k)`    | $O(\sqrt{n})$ |
+| `k` 以下の要素の数を取得            | `s.index_right(k)` | $O(\sqrt{n})$ |
 
 - 償却計算量について
-    > 平衡二分探索木は各操作が $O(\log N)$ 、平方分割は各操作 $O(\sqrt{N})$ であるため、平衡二分探索木の方が速そうに見えますが、うまく高速化すれば、(競プロ実用の範囲では) 平衡二分探索木と同等かそれ以上の速さを得ることができます。
-    > これには、Python の言語特性だったり、list という組み込み型を使えることが影響していそうです。
+  > 平衡二分探索木は各操作が $O(\log N)$ 、平方分割は各操作 $O(\sqrt{N})$ であるため、平衡二分探索木の方が速そうに見えますが、うまく高速化すれば、(競プロ実用の範囲では) 平衡二分探索木と同等かそれ以上の速さを得ることができます。
+  > これには、Python の言語特性だったり、list という組み込み型を使えることが影響していそうです。
