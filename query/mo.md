@@ -2,7 +2,7 @@
 layout: default
 parent: クエリ処理
 summary:
-last_modified_date: 2023-02-16
+last_modified_date: 2023-04-11
 ---
 
 # Mo's algorithm
