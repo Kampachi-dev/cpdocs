@@ -2,7 +2,7 @@
 layout: default
 parent: データ構造
 summary:
-last_modified_date: 2022-12-31
+last_modified_date: 2023-04-11
 ---
 
 # 集合型 set
