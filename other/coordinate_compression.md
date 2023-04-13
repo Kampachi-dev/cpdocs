@@ -2,7 +2,7 @@
 layout: default
 parent: その他
 summary:
-last_modified_date:
+last_modified_date: 2023-04-13
 ---
 
 # 座標圧縮
