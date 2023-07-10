@@ -2,7 +2,7 @@
 layout: default
 parent: 整数論
 summary:
-last_modified_date:
+last_modified_date: 2023-07-10
 ---
 
 # 10 進法と n 進法との相互変換
