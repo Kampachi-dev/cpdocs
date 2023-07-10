@@ -21,6 +21,26 @@ $$ x = S_0 \times n^0 + S_1 \times n^1 + \cdots + S_k \times n^k $$
 を満たすような $S = (S_0, S_1, \dots,S_k)$ を配列として返す。
 
 ```python
+# 基数が正のときに使える軽量版
+def int_base(x: int, base: int) -> list:
+    assert (base >= 2)
+    assert (x >= 0)
+    if x == 0:
+        return [0]
+    x_base = []
+    while True:
+        q, mod = divmod(x, base)
+        x_base.append(mod)
+        if q < base:
+            if q > 0:
+                x_base.append(q)
+            break
+        x = q
+    return x_base
+```
+
+```python
+# 基数が負のときにも使える完全版
 def int_base(x: int, base: int) -> list:
     assert (base >= 2 or base <= -2)
     if base >= 2:
@@ -32,9 +52,31 @@ def int_base(x: int, base: int) -> list:
     while True:
         if abs(x) < abs(base) ** k:
             break
-        q = (abs(x) % (abs(base)**(k+1))) // (abs(base)**k)
-        x_base.append(q)
-        x -= q * (base**k)
+        q = (abs(x) // (abs(base)**k)) % abs(base)
+        if base > 0:
+            x -= q * (base**k)
+            x_base.append(q)
+        else:
+            if x > 0:
+                if k % 2 == 0:
+                    x -= q * (base**k)
+                    x_base.append(q)
+                else:
+                    if q == 0:
+                        x_base.append(0)
+                    else:
+                        x -= (abs(base)-q) * (base**k)
+                        x_base.append(abs(base)-q)
+            else:
+                if k % 2 == 1:
+                    x -= q * (base**k)
+                    x_base.append(q)
+                else:
+                    if q == 0:
+                        x_base.append(0)
+                    else:
+                        x -= (abs(base)-q) * (base**k)
+                        x_base.append(abs(base)-q)
         k += 1
     return x_base
 ```
