@@ -1,7 +1,7 @@
 ---
 layout: default
 nav_order:
-last_modified_date:
+last_modified_date: 2023-07-10
 ---
 
 # 問題で使った発想
