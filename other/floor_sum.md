@@ -11,7 +11,7 @@ last_modified_date: 2023-12-16
 
 $$\sum_{i=0}^{N-1} \left\lfloor {\frac{Ai+B}{M}} \right\rfloor$$ を $O(\log A + \log M)$ で求める。
 
-下図の格子点を再帰的に数えることを考える。すなわち、$\sum_{i=0}^{N-1} \lfloor (Ai+B)/M \rfloor$ を、より領域の小さい $\sum_{i=0}^{N'-1} \lfloor (A'i+B')/M' \rfloor$ に置き換えていく。
+$\sum_{i=0}^{N-1} \lfloor (Ai+B)/M \rfloor$ を、より領域の小さい $\sum_{i=0}^{N'-1} \lfloor (A'i+B')/M' \rfloor$ に再帰的に置き換えていく方針で考える。例として、下図の格子点を数える。
 
 ![](../img/floor_sum_example01.png)
 
@@ -40,6 +40,7 @@ $$\sum_{i=0}^{N-1} \left\lfloor {\frac{Ai+B}{M}} \right\rfloor$$ を $O(\log A +
 ずらしたあとの幅を $N'$ とすると、$N' = N - (N-\lfloor f(N) \rfloor) = \lfloor f(N) \rfloor$ である[^clear]。
 また、$y=(A'x+B')/M'$ が $(N'- f(N), 0)$ を通るので、代入して頑張って計算すると $B'=((A\%M)N+B\%M)\%M$ であることがわかる。
 
+ここまでの計算を $N>0$ である間繰り返す。
 $N,M,A,B$ の更新は $O(1)$ で、ユークリッドの互除法と同様に $A$ と $M$ で余りを取り合いながら計算するので、ループ回数は $O(\log A + \log M)$ である。
 
 ```python
