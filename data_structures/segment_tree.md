@@ -2,7 +2,7 @@
 layout: default
 parent: データ構造
 summary:
-last_modified_date: 2023-12-09
+last_modified_date: 2023-12-16
 ---
 
 # セグメントツリー
