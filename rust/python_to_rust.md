@@ -2,7 +2,7 @@
 layout: default
 parent: Rust
 summary: 
-last_modified_date: 2023-01-04
+last_modified_date: 2025-02-17
 ---
 
 # from Python to Rust
