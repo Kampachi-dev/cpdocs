@@ -42,7 +42,11 @@ P = [0] + list(map(int, input().split()))
 
 ## 出力
 
+[itertools](https://docs.rs/itertools/latest/itertools/) を使う。
+
 ```rust
+use itertools::Itertools;
+
 // 半角スペース区切り
 println!("{}", ans.iter().join(" "));
 
